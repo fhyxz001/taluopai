@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -10,9 +10,7 @@
 <body>
   <main class="app-shell">
     <header class="topbar"><div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div><span class="top-note">THE CARDS ARE LISTENING</span></header>
-
-    <section class="hero"><div class="eyebrow">A QUIET MOMENT WITH THE UNSEEN</div><h1>先问一个问题，<br><em>再抽一张牌。</em></h1><p>选择方向，把心里的问题交给牌面。<br>本次只展示结果，不提供解释。</p></section>
-
+    <section class="hero"><div class="eyebrow">A QUIET MOMENT WITH THE UNSEEN</div><h1>先问一个问题，<br><em>再抽几张牌。</em></h1><p>选择方向，把心里的问题交给牌面。<br>从牌堆中凭直觉选出指定数量，再揭晓结果。</p></section>
     <section class="setup" aria-labelledby="setup-title">
       <div class="section-head"><span>01</span><div><h2 id="setup-title">你想探索什么？</h2><small>先选方向，牌阵会自动匹配</small></div></div>
       <div class="topic-grid" id="topicGrid">
@@ -23,20 +21,18 @@
       </div>
       <label class="question"><span>心里的问题（可选）</span><input id="question" maxlength="80" placeholder="例如：我该如何面对这段关系？" /></label>
     </section>
-
     <section class="draw-panel" aria-labelledby="draw-title">
-      <div class="draw-meta"><div><span class="section-number">02</span><h2 id="draw-title">准备抽牌</h2><p id="spreadHint">圣三角 · 过去 / 现在 / 未来</p></div><div class="count-badge"><strong id="cardCount">03</strong><span>CARDS</span></div></div>
-      <div class="deck-table"><div class="spark spark-one">✦</div><div class="spark spark-two">·</div><div class="deck-stack" id="deckStack" aria-hidden="true"><div class="deck-card back back-one"></div><div class="deck-card back back-two"></div><div class="deck-card back back-three"></div><div class="deck-glyph">✦</div></div><p id="deckMessage">静下心来，准备好后抽牌</p></div>
-      <button class="draw-btn" id="drawBtn" type="button"><span>开始抽牌</span><b>→</b></button>
+      <div class="draw-meta"><div><span class="section-number">02</span><div><h2 id="draw-title">凭直觉选牌</h2><p id="spreadHint">圣三角 · 过去 / 现在 / 未来</p></div></div><div class="count-badge"><strong id="cardCount">03</strong><span>CARDS</span></div></div>
+      <div class="ritual-warning" role="note"><span>✦</span><p>保持神圣的距离，即是保持灵性的敏锐。<br><strong>请避免频繁占卜，以免视野被杂念覆盖。</strong><br><em>Less invocation, more clarity.</em></p></div>
+      <div class="deck-table"><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div><div class="deck-fan" id="deckFan" aria-label="请选择牌面"></div><p id="deckMessage">请从牌堆中选择 3 张牌</p></div>
+      <button class="draw-btn" id="drawBtn" type="button" disabled><span>已选 0 / 3</span><b>→</b></button>
     </section>
-
     <section class="result-panel hidden" id="resultPanel" aria-labelledby="result-title">
-      <div class="section-head result-head"><span>03</span><div><h2 id="result-title">你的牌面</h2><small id="resultSummary">已抽取 3 张牌</small></div><button class="reset-btn" id="resetBtn" type="button">重来 ↺</button></div>
+      <div class="section-head result-head"><span>03</span><div><h2 id="result-title">你的牌面</h2><small id="resultSummary">已抽取 3 张牌</small></div></div>
       <div class="drawn-cards" id="drawnCards"></div>
       <div class="copy-head"><div><h3>可复制的结果</h3><small>复制后发给 AI，即可继续进行解读</small></div><button class="copy-btn" id="copyBtn" type="button">复制结果</button></div>
       <textarea id="resultText" readonly aria-label="可复制的塔罗抽牌结果"></textarea><div class="copy-status" id="copyStatus" role="status"></div>
     </section>
-
     <footer>塔罗不是预言，而是一面诚实的镜子。<span>✦</span></footer>
   </main>
   <script src="script.js"></script>
