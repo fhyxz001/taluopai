@@ -3,16 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0a11" />
+  <meta name="theme-color" content="#f6f4ee" />
   <title>月相 · 塔罗抽牌</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app-shell">
-    <header class="topbar"><div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div><span class="top-note">THE CARDS ARE LISTENING</span></header>
-    <section class="hero"><div class="eyebrow">A QUIET MOMENT WITH THE UNSEEN</div><h1>先问一个问题，<br><em>再抽几张牌。</em></h1><p>选择方向，把心里的问题交给牌面。<br>从牌堆中凭直觉选出指定数量，再揭晓结果。</p></section>
-    <section class="setup" aria-labelledby="setup-title">
-      <div class="section-head"><span>01</span><div><h2 id="setup-title">你想探索什么？</h2><small>先选方向，牌阵会自动匹配</small></div></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div>
+      <div class="steps" id="stepBar" aria-label="占卜进度">
+        <span class="p" data-step="1"><b>1</b>方向</span>
+        <span class="p" data-step="2"><b>2</b>选牌</span>
+        <span class="p" data-step="3"><b>3</b>解读</span>
+      </div>
+    </header>
+
+    <!-- STEP 1 · 方向 -->
+    <section class="step active" id="step-explore" data-step="1">
+      <div class="step-head">
+        <div class="eyebrow">STEP 01 · 方向</div>
+        <h1>你想问什么？</h1>
+        <p>选择一个方向，再写下心里的问题。</p>
+      </div>
       <div class="topic-grid" id="topicGrid">
         <button class="topic selected" data-topic="love" type="button"><b>♡</b><span>关系与爱<small>三张牌</small></span></button>
         <button class="topic" data-topic="career" type="button"><b>↗</b><span>事业与方向<small>三张牌</small></span></button>
@@ -20,19 +32,36 @@
         <button class="topic" data-topic="choice" type="button"><b>✧</b><span>艰难抉择<small>五张牌</small></span></button>
       </div>
       <label class="question"><span>心里的问题（可选）</span><input id="question" maxlength="80" placeholder="例如：我该如何面对这段关系？" /></label>
+      <div class="step-actions"><button class="btn primary" id="btnExploreNext" type="button">下一步 <b>→</b></button></div>
     </section>
-    <section class="draw-panel" aria-labelledby="draw-title">
-      <div class="draw-meta"><div><span class="section-number">02</span><div><h2 id="draw-title">凭直觉选牌</h2><p id="spreadHint">圣三角 · 过去 / 现在 / 未来</p></div></div><div class="count-badge"><strong id="cardCount">03</strong><span>CARDS</span></div></div>
-      <div class="ritual-warning" role="note"><span>✦</span><p>保持神圣的距离，即是保持灵性的敏锐。<br><strong>请避免频繁占卜，以免视野被杂念覆盖。</strong><br><em>Less invocation, more clarity.</em></p></div>
-      <div class="deck-table"><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div><div class="deck-fan" id="deckFan" aria-label="请选择牌面"></div><p id="deckMessage">请从牌堆中选择 3 张牌</p></div>
-      <button class="draw-btn" id="drawBtn" type="button" disabled><span>已选 0 / 3</span><b>→</b></button>
+
+    <!-- STEP 2 · 选牌 -->
+    <section class="step" id="step-draw" data-step="2">
+      <div class="step-head">
+        <div class="eyebrow">STEP 02 · 选牌</div>
+        <h1>凭直觉选 <em id="cardCountHead">3</em> 张牌</h1>
+        <p id="spreadHint"></p>
+      </div>
+      <div class="deck-table"><div class="deck-fan" id="deckFan" aria-label="请选择牌面"></div><p id="deckMessage"></p></div>
+      <div class="step-actions">
+        <button class="btn ghost" id="btnDrawPrev" type="button">← 上一步</button>
+        <button class="btn primary" id="drawBtn" type="button" disabled><span>已选 0 / 3</span><b>→</b></button>
+      </div>
     </section>
-    <section class="result-panel hidden" id="resultPanel" aria-labelledby="result-title">
-      <div class="section-head result-head"><span>03</span><div><h2 id="result-title">你的牌面</h2><small id="resultSummary">已抽取 3 张牌</small></div></div>
+
+    <!-- STEP 3 · 解读 -->
+    <section class="step" id="step-result" data-step="3">
+      <div class="step-head">
+        <div class="eyebrow">STEP 03 · 解读</div>
+        <h1>你的牌面</h1>
+        <p id="resultSummary"></p>
+      </div>
       <div class="drawn-cards" id="drawnCards"></div>
       <div class="copy-head"><div><h3>可复制的结果</h3><small>复制后发给 AI，即可继续进行解读</small></div><button class="copy-btn" id="copyBtn" type="button">复制结果</button></div>
       <textarea id="resultText" readonly aria-label="可复制的塔罗抽牌结果"></textarea><div class="copy-status" id="copyStatus" role="status"></div>
+      <div class="step-actions center"><button class="btn ghost" id="btnRestart" type="button">↺ 重新占卜</button></div>
     </section>
+
     <footer>塔罗不是预言，而是一面诚实的镜子。<span>✦</span></footer>
   </main>
   <script src="script.js"></script>
