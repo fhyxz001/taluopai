@@ -12,15 +12,14 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const shuffle=items=>[...items].sort(()=>Math.random()-.5);
 const requiredCount=()=>spreads[currentTopic].positions.length;
 const orientation=()=>Math.random()>.72?'逆位':'正位';
-const IMG_HOST='https://files.catbox.moe/';
-const imageIds={
-  '愚者':'gug4vr','魔术师':'e474fi','女教皇':'2dl5xm','女帝':'vt42tg','皇帝':'3tijf1',
-  '法皇':'gg34cj','恋人':'kbhose','战车':'kquzqc','力':'sy8779','隐者':'qzugs1',
-  '命运之轮':'wqlzzd','正义':'ss338a','倒吊人':'9fh93e','死神':'tal5j2','节制':'exkxv7',
-  '恶魔':'ujvojt','塔':'zwg3fw','星':'7c8ply','月亮':'t460v5','太阳':'zfc4rc',
-  '审判':'68jnsz','世界':'ag89pz'
+const localFiles={
+  '愚者':'19.愚者','魔术师':'9.魔术师','女教皇':'11.女教皇','女帝':'10.女帝','皇帝':'4.皇帝',
+  '法皇':'3.法皇','恋人':'7.恋人','战车':'21.战车','力':'6.力','隐者':'18.隐者',
+  '命运之轮':'8.命运之轮','正义':'22.正义','倒吊人':'1.倒吊人','死神':'14.死神','节制':'5.节制',
+  '恶魔':'2.恶魔','塔':'15.塔','星':'17.星','月亮':'20.月亮','太阳':'16.太阳',
+  '审判':'12.审判','世界':'13.世界'
 };
-const imagePath=card=>`${IMG_HOST}${imageIds[card.file]}.png`;
+const imagePath=card=>`image/${encodeURIComponent(localFiles[card.file])}.jpg`;
 function renderSetup(){const spread=spreads[currentTopic];$('#spreadHint').textContent=spread.hint;$('#cardCount').textContent=String(spread.positions.length).padStart(2,'0');renderDeck();}
 function renderDeck(){availableCards=shuffle(deck).slice(0,14).map(([name,keyword,symbol,file])=>({name,keyword,symbol,file}));selectedCards=[];isConfirmed=false;$('#deckFan').innerHTML=availableCards.map((card,index)=>`<button class="pick-card" data-index="${index}" type="button" aria-label="选择第 ${index+1} 张牌" aria-pressed="false"><span class="pick-back"><i>✦</i></span></button>`).join('');$$('.pick-card').forEach(card=>card.addEventListener('click',()=>toggleCard(Number(card.dataset.index))));updateSelectionUI();}
 function toggleCard(index){if(isConfirmed)return;const existing=selectedCards.findIndex(item=>item.index===index);if(existing>=0)selectedCards.splice(existing,1);else{if(selectedCards.length>=requiredCount())return;const card=availableCards[index];selectedCards.push({index,...card,orientation:orientation()});}updateSelectionUI();}
