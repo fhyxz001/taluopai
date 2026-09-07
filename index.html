@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090a12" />
+  <title>月相 · 塔罗占卜</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div>
+      <div class="date-stamp">the cards are listening</div>
+    </header>
+
+    <section class="hero">
+      <div class="kicker">A quiet moment with the unseen</div>
+      <h1>把问题交给<br><em>星辰。</em></h1>
+      <p>先选一个你此刻最想探寻的方向。深呼吸，保持开放，然后让牌面替你照见尚未说出口的答案。</p>
+    </section>
+
+    <section aria-labelledby="direction-title">
+      <div class="section-label" id="direction-title">01 / 选择占卜方向</div>
+      <div class="spreads" id="spreadOptions">
+        <button class="spread-option selected" data-spread="love" type="button"><span class="spread-count">03 CARDS</span><div class="spread-icon">♡</div><span class="spread-name">关系与爱</span><span class="spread-note">看见关系中的流动与心意</span></button>
+        <button class="spread-option" data-spread="career" type="button"><span class="spread-count">03 CARDS</span><div class="spread-icon">↗</div><span class="spread-name">事业与方向</span><span class="spread-note">寻找下一步的势能与阻力</span></button>
+        <button class="spread-option" data-spread="daily" type="button"><span class="spread-count">01 CARD</span><div class="spread-icon">☼</div><span class="spread-name">今日指引</span><span class="spread-note">给今天的一句低语</span></button>
+        <button class="spread-option" data-spread="choice" type="button"><span class="spread-count">05 CARDS</span><div class="spread-icon">✧</div><span class="spread-name">艰难抉择</span><span class="spread-note">在两条路之间寻找内在秩序</span></button>
+      </div>
+    </section>
+
+    <section class="reading active" id="reading">
+      <div class="reading-head"><div><h2 class="reading-title" id="readingTitle">关系与爱的三张牌</h2><p class="reading-subtitle" id="readingSubtitle">过去 · 现在 · 未来</p></div><div class="progress" id="progress">已翻开 0 / 3</div></div>
+      <div class="cards" id="cards"></div>
+      <div class="actions"><button class="btn" id="drawBtn" type="button">开始抽牌</button><button class="btn secondary" id="resetBtn" type="button">重新开始</button></div>
+    </section>
+
+    <section class="results" id="results"><div class="section-label">02 / 牌面回响</div><div class="result-grid" id="resultGrid"><p class="empty-results">翻开牌面后，你的专属解读会在这里出现。</p></div></section>
+    <footer class="footer">塔罗不是预言，而是一面诚实的镜子。请将答案留给自己的直觉。</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
