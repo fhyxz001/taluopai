@@ -2,42 +2,42 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#090a12" />
-  <title>月相 · 塔罗占卜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0a11" />
+  <title>月相 · 塔罗抽牌</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app-shell">
-    <header class="topbar">
-      <div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div>
-      <div class="date-stamp">the cards are listening</div>
-    </header>
+    <header class="topbar"><div class="brand"><span class="brand-mark">☾</span><span>月相占卜室</span></div><span class="top-note">THE CARDS ARE LISTENING</span></header>
 
-    <section class="hero">
-      <div class="kicker">A quiet moment with the unseen</div>
-      <h1>把问题交给<br><em>星辰。</em></h1>
-      <p>先选一个你此刻最想探寻的方向。深呼吸，保持开放，然后让牌面替你照见尚未说出口的答案。</p>
-    </section>
+    <section class="hero"><div class="eyebrow">A QUIET MOMENT WITH THE UNSEEN</div><h1>先问一个问题，<br><em>再抽一张牌。</em></h1><p>选择方向，把心里的问题交给牌面。<br>本次只展示结果，不提供解释。</p></section>
 
-    <section aria-labelledby="direction-title">
-      <div class="section-label" id="direction-title">01 / 选择占卜方向</div>
-      <div class="spreads" id="spreadOptions">
-        <button class="spread-option selected" data-spread="love" type="button"><span class="spread-count">03 CARDS</span><div class="spread-icon">♡</div><span class="spread-name">关系与爱</span><span class="spread-note">看见关系中的流动与心意</span></button>
-        <button class="spread-option" data-spread="career" type="button"><span class="spread-count">03 CARDS</span><div class="spread-icon">↗</div><span class="spread-name">事业与方向</span><span class="spread-note">寻找下一步的势能与阻力</span></button>
-        <button class="spread-option" data-spread="daily" type="button"><span class="spread-count">01 CARD</span><div class="spread-icon">☼</div><span class="spread-name">今日指引</span><span class="spread-note">给今天的一句低语</span></button>
-        <button class="spread-option" data-spread="choice" type="button"><span class="spread-count">05 CARDS</span><div class="spread-icon">✧</div><span class="spread-name">艰难抉择</span><span class="spread-note">在两条路之间寻找内在秩序</span></button>
+    <section class="setup" aria-labelledby="setup-title">
+      <div class="section-head"><span>01</span><div><h2 id="setup-title">你想探索什么？</h2><small>先选方向，牌阵会自动匹配</small></div></div>
+      <div class="topic-grid" id="topicGrid">
+        <button class="topic selected" data-topic="love" type="button"><b>♡</b><span>关系与爱<small>三张牌</small></span></button>
+        <button class="topic" data-topic="career" type="button"><b>↗</b><span>事业与方向<small>三张牌</small></span></button>
+        <button class="topic" data-topic="daily" type="button"><b>☼</b><span>今日指引<small>一张牌</small></span></button>
+        <button class="topic" data-topic="choice" type="button"><b>✧</b><span>艰难抉择<small>五张牌</small></span></button>
       </div>
+      <label class="question"><span>心里的问题（可选）</span><input id="question" maxlength="80" placeholder="例如：我该如何面对这段关系？" /></label>
     </section>
 
-    <section class="reading active" id="reading">
-      <div class="reading-head"><div><h2 class="reading-title" id="readingTitle">关系与爱的三张牌</h2><p class="reading-subtitle" id="readingSubtitle">过去 · 现在 · 未来</p></div><div class="progress" id="progress">已翻开 0 / 3</div></div>
-      <div class="cards" id="cards"></div>
-      <div class="actions"><button class="btn" id="drawBtn" type="button">开始抽牌</button><button class="btn secondary" id="resetBtn" type="button">重新开始</button></div>
+    <section class="draw-panel" aria-labelledby="draw-title">
+      <div class="draw-meta"><div><span class="section-number">02</span><h2 id="draw-title">准备抽牌</h2><p id="spreadHint">圣三角 · 过去 / 现在 / 未来</p></div><div class="count-badge"><strong id="cardCount">03</strong><span>CARDS</span></div></div>
+      <div class="deck-table"><div class="spark spark-one">✦</div><div class="spark spark-two">·</div><div class="deck-stack" id="deckStack" aria-hidden="true"><div class="deck-card back back-one"></div><div class="deck-card back back-two"></div><div class="deck-card back back-three"></div><div class="deck-glyph">✦</div></div><p id="deckMessage">静下心来，准备好后抽牌</p></div>
+      <button class="draw-btn" id="drawBtn" type="button"><span>开始抽牌</span><b>→</b></button>
     </section>
 
-    <section class="results" id="results"><div class="section-label">02 / 牌面回响</div><div class="result-grid" id="resultGrid"><p class="empty-results">翻开牌面后，你的专属解读会在这里出现。</p></div></section>
-    <footer class="footer">塔罗不是预言，而是一面诚实的镜子。请将答案留给自己的直觉。</footer>
+    <section class="result-panel hidden" id="resultPanel" aria-labelledby="result-title">
+      <div class="section-head result-head"><span>03</span><div><h2 id="result-title">你的牌面</h2><small id="resultSummary">已抽取 3 张牌</small></div><button class="reset-btn" id="resetBtn" type="button">重来 ↺</button></div>
+      <div class="drawn-cards" id="drawnCards"></div>
+      <div class="copy-head"><div><h3>可复制的结果</h3><small>复制后发给 AI，即可继续进行解读</small></div><button class="copy-btn" id="copyBtn" type="button">复制结果</button></div>
+      <textarea id="resultText" readonly aria-label="可复制的塔罗抽牌结果"></textarea><div class="copy-status" id="copyStatus" role="status"></div>
+    </section>
+
+    <footer>塔罗不是预言，而是一面诚实的镜子。<span>✦</span></footer>
   </main>
   <script src="script.js"></script>
 </body>

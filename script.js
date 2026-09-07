@@ -1,109 +1,23 @@
-﻿const spreads = {
-  love: { title: '关系与爱的三张牌', subtitle: '过去 · 现在 · 未来', positions: ['关系的根源', '此刻的心意', '关系的走向'] },
-  career: { title: '事业与方向的三张牌', subtitle: '资源 · 阻力 · 下一步', positions: ['你拥有的资源', '正在面对的阻力', '值得走向的方向'] },
-  daily: { title: '今日指引', subtitle: '一张牌 · 一个提醒', positions: ['今日的核心能量'] },
-  choice: { title: '艰难抉择的五张牌', subtitle: '内心 · 选项 A · 选项 B · 盲点 · 建议', positions: ['你真正想要的', '选择 A 的能量', '选择 B 的能量', '容易忽略的盲点', '此刻的行动建议'] }
+﻿const spreads={
+  love:{title:'关系与爱的三张牌',hint:'圣三角 · 过去 / 现在 / 未来',positions:['关系的根源','此刻的心意','关系的走向']},
+  career:{title:'事业与方向的三张牌',hint:'行动牌阵 · 资源 / 阻力 / 下一步',positions:['你拥有的资源','正在面对的阻力','值得走向的方向']},
+  daily:{title:'今日指引',hint:'一张牌 · 今天最重要的提醒',positions:['今日的核心能量']},
+  choice:{title:'艰难抉择的五张牌',hint:'抉择牌阵 · 内心 / A / B / 盲点 / 建议',positions:['你真正想要的','选择 A 的能量','选择 B 的能量','容易忽略的盲点','此刻的行动建议']}
 };
-
-const deck = [
-  ['愚者','新的开始并不需要完整的地图。允许自己先迈出一步，未知会在路上逐渐显形。','✦'],
-  ['魔术师','你手上的工具已经足够。把分散的想法聚拢起来，主动创造，而不是等待时机降临。','☿'],
-  ['女祭司','答案藏在安静处，也藏在你已经察觉却暂时忽略的直觉里。先听，再行动。','☾'],
-  ['皇后','滋养与丰盛正在发生。用温柔对待自己，好的关系和成果需要被耐心培育。','❀'],
-  ['皇帝','为混乱建立边界。清晰的规则、稳定的节奏，会帮助你重新拿回主导权。','♜'],
-  ['教皇','向成熟的经验请教并不等于失去自我。传统里或许藏着一条可靠的捷径。','✚'],
-  ['恋人','真正的选择始于诚实地承认自己的价值排序。别只问哪条路更安全，也问哪条更像你。','♡'],
-  ['战车','方向一旦确定，犹豫就会消耗力量。驾驭相反的情绪，朝同一个目标持续前进。','➶'],
-  ['力量','不必用强硬证明勇敢。稳定、耐心与对脆弱的接纳，才是此刻最有穿透力的力量。','♌'],
-  ['隐者','暂时离开喧闹并不是退缩，而是在寻找自己的灯。给思考留出不被打扰的时间。','⌁'],
-  ['命运之轮','局面正在转动，旧的周期即将松开。抓住变化给出的窗口，但不要试图控制全部结果。','◎'],
-  ['正义','让事实与感受都被看见。一个公平的决定，通常需要你承担与选择相等的责任。','⚖'],
-  ['倒吊人','换一个角度，停下来，反而会带来进展。某种暂时的延迟正在帮你看清代价与意义。','▽'],
-  ['死神','结束不是惩罚，是空间被清理出来。放下已经完成使命的旧身份，新的章节才会有位置。','☠'],
-  ['节制','不要急着二选一，先寻找能够共存的比例。温和的调整，会带来持续而真实的改变。','⚗'],
-  ['恶魔','看见让你上瘾的东西：恐惧、执念，或一段不再平等的交换。意识本身就是松绑的开始。','⛓'],
-  ['高塔','一个不稳固的结构正在崩塌。虽然突然，却也替更诚实的生活腾出了空间。','ϟ'],
-  ['星星','希望不是盲目乐观，而是你在破碎之后依然愿意相信未来。恢复、疗愈与灵感都在靠近。','★'],
-  ['月亮','不确定感会放大想象。暂缓下结论，等雾散一些；梦境和情绪值得记录，但不必立刻服从。','☽'],
-  ['太阳','清晰、热度与坦率会照亮局面。把真实的喜悦说出来，你会发现支持比想象中更多。','☀'],
-  ['审判','一个旧问题正在呼唤最终回应。原谅过去的自己，听见内心真正准备好承担的召唤。','♧'],
-  ['世界','一段旅程正在完整地闭合。庆祝已经走过的路，然后把经验带入更辽阔的下一轮。','◌']
+const deck=[
+ ['愚者','新的开始','✦'],['魔术师','创造与行动','☿'],['女祭司','直觉与未知','☾'],['皇后','滋养与丰盛','❀'],['皇帝','秩序与边界','♜'],['教皇','经验与传统','✚'],['恋人','选择与连接','♡'],['战车','方向与胜意','➶'],['力量','勇气与耐心','♌'],['隐者','独处与寻找','⌁'],['命运之轮','变化与周期','◎'],['正义','平衡与责任','⚖'],['倒吊人','暂停与换位','▽'],['死神','结束与转化','☠'],['节制','融合与调整','⚗'],['恶魔','执念与束缚','⛓'],['高塔','突变与重建','ϟ'],['星星','希望与疗愈','★'],['月亮','迷雾与想象','☽'],['太阳','清晰与喜悦','☀'],['审判','觉醒与回应','♧'],['世界','完成与新章','◌']
 ];
-
-let currentSpread = 'love';
-let currentCards = [];
-let revealed = 0;
-
-const $ = (selector) => document.querySelector(selector);
-const options = document.querySelectorAll('.spread-option');
-const cardsEl = $('#cards');
-const resultsEl = $('#results');
-const resultGrid = $('#resultGrid');
-
-function shuffledDeck() {
-  return [...deck].sort(() => Math.random() - 0.5);
-}
-
-function renderReading() {
-  const spread = spreads[currentSpread];
-  $('#readingTitle').textContent = spread.title;
-  $('#readingSubtitle').textContent = spread.subtitle;
-  $('#progress').textContent = `已翻开 0 / ${spread.positions.length}`;
-  $('#drawBtn').textContent = '开始抽牌';
-  currentCards = shuffledDeck().slice(0, spread.positions.length);
-  revealed = 0;
-  cardsEl.innerHTML = spread.positions.map((position, index) => `
-    <div class="card-slot locked" data-index="${index}">
-      <div class="tarot-card" role="button" tabindex="0" aria-label="翻开第 ${index + 1} 张牌">
-        <div class="card-inner">
-          <div class="card-face card-back"></div>
-          <div class="card-face card-front" style="--art-glow: ${index % 2 ? 'rgba(110, 162, 157, .45)' : 'rgba(174, 116, 143, .45)'}">
-            <div class="card-art">${currentCards[index][2]}</div>
-            <div class="card-name">${currentCards[index][0]}</div>
-            <div class="card-position">${position}</div>
-          </div>
-        </div>
-      </div>
-      <div class="card-caption">待翻开</div>
-    </div>`).join('');
-  resultGrid.innerHTML = '<p class="empty-results">翻开牌面后，你的专属解读会在这里出现。</p>';
-  resultsEl.classList.remove('visible');
-  cardsEl.querySelectorAll('.tarot-card').forEach((card) => {
-    card.addEventListener('click', () => revealCard(Number(card.closest('.card-slot').dataset.index)));
-    card.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') revealCard(Number(card.closest('.card-slot').dataset.index)); });
-  });
-}
-
-function revealCard(index) {
-  if (index !== revealed) return;
-  const slot = cardsEl.querySelector(`[data-index="${index}"]`);
-  if (!slot || !slot.classList.contains('locked')) return;
-  slot.classList.remove('locked');
-  slot.querySelector('.tarot-card').classList.add('flipped');
-  slot.querySelector('.card-caption').textContent = '已揭示';
-  revealed++;
-  $('#progress').textContent = `已翻开 ${revealed} / ${currentCards.length}`;
-  $('#drawBtn').textContent = revealed < currentCards.length ? '翻开下一张' : '查看完整解读';
-  if (revealed === currentCards.length) showResults();
-}
-
-function showResults() {
-  resultGrid.innerHTML = currentCards.map((card, index) => `<article class="result"><div class="result-top"><h3>${card[0]}</h3><span class="result-tag">${spreads[currentSpread].positions[index]}</span></div><p>${card[1]}</p></article>`).join('');
-  resultsEl.classList.add('visible');
-  setTimeout(() => resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 160);
-}
-
-options.forEach((option) => option.addEventListener('click', () => {
-  options.forEach((item) => item.classList.remove('selected'));
-  option.classList.add('selected');
-  currentSpread = option.dataset.spread;
-  renderReading();
-  $('#reading').scrollIntoView({ behavior: 'smooth', block: 'center' });
-}));
-
-$('#drawBtn').addEventListener('click', () => {
-  if (revealed < currentCards.length) revealCard(revealed);
-  else showResults();
-});
-$('#resetBtn').addEventListener('click', renderReading);
-renderReading();
+let currentTopic='love';let currentCards=[];let isDrawing=false;
+const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+function shuffle(items){return [...items].sort(()=>Math.random()-.5)}
+function randomCards(count){return shuffle(deck).slice(0,count).map(card=>({...{name:card[0],keyword:card[1],symbol:card[2]},orientation:Math.random()>.72?'逆位':'正位'}))}
+function renderSetup(){const spread=spreads[currentTopic];$('#spreadHint').textContent=spread.hint;$('#cardCount').textContent=String(spread.positions.length).padStart(2,'0');$('#deckMessage').textContent=`静下心来，准备好后抽 ${spread.positions.length} 张牌`}
+function renderCards(){const spread=spreads[currentTopic];$('#drawnCards').innerHTML=currentCards.map((card,index)=>`<article class="drawn-card" style="animation-delay:${index*.08}s"><div class="mini-card"><div class="mini-symbol">${card.symbol}</div><strong class="mini-name">${card.name}</strong><small class="mini-position">${spread.positions[index]}</small><small class="mini-orientation">${card.orientation}</small></div></article>`).join('')}
+function buildCopyText(){const spread=spreads[currentTopic];const question=$('#question').value.trim();const lines=['【塔罗抽牌结果】',`占卜方向：${topicLabel(currentTopic)}`,`牌阵：${spread.title}（${spread.hint.split(' · ')[1]||spread.hint}）`,question?`我的问题：${question}`:'我的问题：未填写','',...currentCards.map((card,index)=>`${index+1}. ${spread.positions[index]}：${card.name}（${card.orientation}）`),'','请根据以上牌阵位置、牌名与正逆位进行塔罗解读。暂不需要复述抽牌结果，请直接开始分析。'];return lines.join('\n')}
+function topicLabel(topic){return {love:'关系与爱',career:'事业与方向',daily:'今日指引',choice:'艰难抉择'}[topic]}
+function draw(){if(isDrawing)return;isDrawing=true;const stack=$('#deckStack');stack.classList.add('shuffling');$('#drawBtn').disabled=true;$('#drawBtn span').textContent='正在洗牌…';setTimeout(()=>{const spread=spreads[currentTopic];currentCards=randomCards(spread.positions.length);stack.classList.remove('shuffling');renderCards();$('#resultText').value=buildCopyText();$('#resultSummary').textContent=`${currentCards.length} 张牌已抽取 · 结果可复制`;$('#resultPanel').classList.remove('hidden');$('#drawBtn span').textContent='再次抽牌';$('#drawBtn').disabled=false;isDrawing=false;setTimeout(()=>$('#resultPanel').scrollIntoView({behavior:'smooth',block:'start'}),180)},900)}
+function reset(){currentCards=[];$('#resultPanel').classList.add('hidden');$('#resultText').value='';$('#copyStatus').textContent='';$('#copyBtn').classList.remove('copied');$('#drawBtn span').textContent='开始抽牌';$('#deckMessage').textContent=`静下心来，准备好后抽 ${spreads[currentTopic].positions.length} 张牌`;window.scrollTo({top:0,behavior:'smooth'})}
+$$('.topic').forEach(button=>button.addEventListener('click',()=>{$$('.topic').forEach(item=>item.classList.remove('selected'));button.classList.add('selected');currentTopic=button.dataset.topic;renderSetup();reset()}));
+$('#drawBtn').addEventListener('click',()=>{if($('#resultPanel').classList.contains('hidden'))draw();else{reset();setTimeout(draw,150)}});$('#resetBtn').addEventListener('click',reset);
+$('#copyBtn').addEventListener('click',async()=>{const text=$('#resultText').value;if(!text)return;try{await navigator.clipboard.writeText(text)}catch{const area=$('#resultText');area.focus();area.select();document.execCommand('copy')}$('#copyBtn').textContent='已复制 ✓';$('#copyBtn').classList.add('copied');$('#copyStatus').textContent='结果已复制，可以粘贴给 AI 进行解读';setTimeout(()=>{$('#copyBtn').textContent='复制结果';$('#copyBtn').classList.remove('copied')},2200)});
+renderSetup();
